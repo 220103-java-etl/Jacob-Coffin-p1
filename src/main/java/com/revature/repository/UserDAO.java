@@ -18,18 +18,24 @@ public class UserDAO implements GenericDAO<User> {
 
     @Override
     public User add(User user) {
-        String sql = "insert into users values (default, ?, ?, ?) returning *";
+        String sql = "insert into users values (default, ?, ?, ?, ?, ?, ?) returning *";
         try(Connection conn = cu.getConnection()) {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1,user.getFirst_name());
             ps.setString(2,user.getLast_name());
-            ps.setString(3,user.getRole());
+            ps.setString(3,user.getUsername());
+            ps.setString(4,user.getPass());
+            ps.setString(5,user.getEmail());
+            ps.setString(6,user.getRole());
             ResultSet rs = ps.executeQuery();
             if(rs.next()) {
                 User u = new User(
                         rs.getInt("id"),
                         rs.getString("first_name"),
                         rs.getString("last_name"),
+                        rs.getString("username"),
+                        rs.getString("pass"),
+                        rs.getString("email"),
                         rs.getString("role")
                 );
                 return u;
@@ -53,6 +59,9 @@ public class UserDAO implements GenericDAO<User> {
                         rs.getInt("id"),
                         rs.getString("first_name"),
                         rs.getString("last_name"),
+                        rs.getString("username"),
+                        rs.getString("pass"),
+                        rs.getString("email"),
                         rs.getString("role")
                 );
                 return u;
@@ -65,18 +74,20 @@ public class UserDAO implements GenericDAO<User> {
 
 
     @Override
-    public User getByName(String first_name, String last_name) {
-        String sql = "select * from users where first_name = ? and last_name = ?";
+    public User getByUsername(String username) {
+        String sql = "select * from users where username = ?";
         try(Connection conn = cu.getConnection()) {
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, "first_name");
-            ps.setString(2, "last_name");
+            ps.setString(1, username);
             ResultSet rs = ps.executeQuery();
             if(rs.next()) {
                 User u = new User(
                         rs.getInt("id"),
                         rs.getString("first_name"),
                         rs.getString("last_name"),
+                        rs.getString("username"),
+                        rs.getString("pass"),
+                        rs.getString("email"),
                         rs.getString("role")
                 );
                 return u;
@@ -100,6 +111,9 @@ public class UserDAO implements GenericDAO<User> {
                         rs.getInt("id"),
                         rs.getString("first_name"),
                         rs.getString("last_name"),
+                        rs.getString("username"),
+                        rs.getString("pass"),
+                        rs.getString("email"),
                         rs.getString("role")
                 );
                 users.add(u);
@@ -113,12 +127,15 @@ public class UserDAO implements GenericDAO<User> {
 
     @Override
     public void update(User user) {
-        String sql = "update users set first_name = ?, last_name = ? where id = ?";
+        String sql = "update users set first_name = ?, last_name = ?, username = ?, pass = ?, email = ? where id = ?";
         try(Connection conn = cu.getConnection()) {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1,user.getFirst_name());
             ps.setString(2,user.getLast_name());
-            ps.setInt(3,user.getId());
+            ps.setString(3,user.getUsername());
+            ps.setString(4,user.getPass());
+            ps.setString(5,user.getEmail());
+            ps.setInt(6,user.getId());
             ps.executeUpdate();
         } catch(SQLException e) {
             e.printStackTrace();

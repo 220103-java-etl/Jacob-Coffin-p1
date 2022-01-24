@@ -44,9 +44,9 @@ public class AppDriver {
                         System.out.println("Invalid Input!");
                         break;
                     }
-                    User u = new User(0, fname, lname, role);
-                    u = udao.add(u);
-                    System.out.println(u.toString());
+//                    User u = new User(0, fname, lname, role);
+//                    u = udao.add(u);
+//                    System.out.println(u.toString());
                     break;
                 case 2:
                     System.out.println("Enter ID of User to delete:");
@@ -57,16 +57,16 @@ public class AppDriver {
                 case 3:
                     System.out.println("Enter ID of User to look up:");
                     input2 = scan.nextInt();
-                    u = udao.getById(input2);
-                    System.out.println(u.toString());
+//                    u = udao.getById(input2);
+//                    System.out.println(u.toString());
                     break;
                 case 4:
                     System.out.println("Enter first name:");
                     fname = scan.next();
                     System.out.println("Enter last name:");
                     lname = scan.next();
-                    u = udao.getByName(fname, lname);
-                    System.out.println(u.toString());
+//                    u = udao.getByName(fname, lname);
+//                    System.out.println(u.toString());
                     break;
                 case 5:
                     List<User> users = udao.getAll();
@@ -81,8 +81,8 @@ public class AppDriver {
                     fname = scan.next();
                     System.out.println("Enter new last name:");
                     lname = scan.next();
-                    u = new User(input2, fname, lname, null);
-                    udao.update(u);
+//                    u = new User(input2, fname, lname, null);
+//                    udao.update(u);
                     System.out.println("User " + input2 + " updated.");
                     break;
                 case 0:

@@ -7,14 +7,20 @@ public class User {
     private int id;
     private String first_name;
     private String last_name;
+    private String username;
+    private String pass;
+    private String email;
     private String role;
 
     public User() {}
 
-    public User(int id, String first_name, String last_name, String role) {
+    public User(int id, String first_name, String last_name, String username, String pass, String email, String role) {
         this.id = id;
         this.first_name = first_name;
         this.last_name = last_name;
+        this.username = username;
+        this.pass = pass;
+        this.email = email;
         this.role = role;
     }
 
@@ -42,6 +48,30 @@ public class User {
         this.last_name = last_name;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getRole() {
         return role;
     }
@@ -56,6 +86,9 @@ public class User {
                 "id=" + id +
                 ", first_name='" + first_name + '\'' +
                 ", last_name='" + last_name + '\'' +
+                ", username='" + username + '\'' +
+                ", pass='" + pass + '\'' +
+                ", email='" + email + '\'' +
                 ", role='" + role + '\'' +
                 ']';
     }
