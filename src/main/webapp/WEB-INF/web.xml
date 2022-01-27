@@ -8,22 +8,30 @@
     <servlet>
         <servlet-name>FrontServlet</servlet-name>
         <servlet-class>com.revature.servlets.FrontServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
     </servlet>
 
     <servlet>
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>com.revature.servlets.RegisterServlet</servlet-class>
-        <load-on-startup>2</load-on-startup>
+    </servlet>
+
+    <servlet>
+        <servlet-name>UserServlet</servlet-name>
+        <servlet-class>com.revature.servlets.UserServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>FrontServlet</servlet-name>
-        <url-pattern>/login</url-pattern>
+        <url-pattern>/index</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>UserServlet</servlet-name>
+        <url-pattern>/users/*</url-pattern>
     </servlet-mapping>
 </web-app>

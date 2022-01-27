@@ -24,6 +24,14 @@ public class AppDriver {
         int input2 = 0;
         UserDAO udao = new UserDAO();
 
+
+        if(conn != null) {
+            System.out.println("Connection Successful");
+        } else {
+            System.out.println("Something went wrong");
+        }
+
+
         System.out.println("Welcome to the Test App!");
         do {
             System.out.println("Enter 1 to add user, enter 2 to delete, enter 3 to look up by ID, enter 4 to look up by name, enter 5 to print all, enter 6 to update, enter 0 to quit.");
@@ -45,8 +53,8 @@ public class AppDriver {
                         break;
                     }
 //                    User u = new User(0, fname, lname, role);
-//                    u = udao.add(u);
-//                    System.out.println(u.toString());
+ //                   u = udao.add(u);
+ //                   System.out.println(u.toString());
                     break;
                 case 2:
                     System.out.println("Enter ID of User to delete:");
@@ -57,15 +65,15 @@ public class AppDriver {
                 case 3:
                     System.out.println("Enter ID of User to look up:");
                     input2 = scan.nextInt();
-//                    u = udao.getById(input2);
-//                    System.out.println(u.toString());
+                    User u = udao.getById(input2);
+                    System.out.println(u.toString());
                     break;
                 case 4:
                     System.out.println("Enter first name:");
                     fname = scan.next();
                     System.out.println("Enter last name:");
                     lname = scan.next();
-//                    u = udao.getByName(fname, lname);
+//                    u = udao.getByUsername(fname, lname);
 //                    System.out.println(u.toString());
                     break;
                 case 5:
@@ -92,5 +100,11 @@ public class AppDriver {
                     System.out.println("Invalid Input!");
             }
         } while(input != 0);
+
+        try {
+            conn.close();
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

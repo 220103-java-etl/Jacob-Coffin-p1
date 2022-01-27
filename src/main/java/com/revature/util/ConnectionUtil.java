@@ -33,6 +33,13 @@ public class ConnectionUtil {
 
     public Connection getConnection() {
         Connection conn = null;
+
+        try {
+            Class.forName(dbProps.getProperty("driver"));
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
         String url = dbProps.getProperty("url");
         String username = dbProps.getProperty("username");
         String password = dbProps.getProperty("password");

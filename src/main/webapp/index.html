@@ -8,20 +8,20 @@
     <h1>Welcome to the Employee Refund System</h1>
 
     <div id="login" class="login">
-        <form action="login" method="GET">
+        <form action="users" target="blank" method="post">
             <fieldset style="width:500px">
                 <legend>LOGIN</legend>
                 <label>Username:
-                    <input type="text" name="username" minlength="1" required>
+                    <input id="username" type="text" name="username" required>
                 </label>
                 <br>
                 <br>
                 <label>Password:
-                    <input type="password" name="password" minlength="6" required>
+                    <input id="password" type="password" name="password" required>
                 </label>
                 <br>
                 <br>
-                <input type="submit" value="Submit">
+                <input type="submit" value="Login">
             </fieldset>
         </form>
     </div>

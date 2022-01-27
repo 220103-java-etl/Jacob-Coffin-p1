@@ -3,6 +3,8 @@ package com.revature.service;
 import com.revature.models.User;
 import com.revature.repository.UserDAO;
 
+import java.util.List;
+
 public class UserService {
 
     private UserDAO udao = new UserDAO();
@@ -16,5 +18,13 @@ public class UserService {
         }
         System.out.println("Credentials do not match!");
         return null;
+    }
+
+    public List<User> getAll() {
+        return udao.getAll();
+    }
+
+    public User getByUsername(String username) {
+        return udao.getByUsername(username);
     }
 }
