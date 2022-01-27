@@ -10,17 +10,19 @@ public class User {
     private String username;
     private String pass;
     private String email;
+    private double funds;
     private String role;
 
     public User() {}
 
-    public User(int id, String first_name, String last_name, String username, String pass, String email, String role) {
+    public User(int id, String first_name, String last_name, String username, String pass, String email, double funds, String role) {
         this.id = id;
         this.first_name = first_name;
         this.last_name = last_name;
         this.username = username;
         this.pass = pass;
         this.email = email;
+        this.funds = funds;
         this.role = role;
     }
 
@@ -72,6 +74,14 @@ public class User {
         this.email = email;
     }
 
+    public double getFunds() {
+        return funds;
+    }
+
+    public void setFunds(double funds) {
+        this.funds = funds;
+    }
+
     public String getRole() {
         return role;
     }
@@ -89,6 +99,7 @@ public class User {
                 ", username='" + username + '\'' +
                 ", pass='" + pass + '\'' +
                 ", email='" + email + '\'' +
+                ", funds='" + funds + '\'' +
                 ", role='" + role + '\'' +
                 ']';
     }

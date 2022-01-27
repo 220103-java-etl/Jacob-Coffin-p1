@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register a new account</title>
+</head>
+<body>
+<center>
+    <div id="register" class="register">
+        <h1>Account Registration</h1>
+
+        <form action="register" method="GET">
+            <fieldset style="width:500px">
+                <legend>Your Details</legend>
+                <label>First Name:
+                    <input type="text" name="firstname" minlength="1" required>
+                </label>
+                <br>
+                <br>
+                <label>Last Name:
+                    <input type="text" name="lastname" minlength="1" required>
+                </label>
+                <br>
+                <br>
+                <label>Username:
+                    <input type="text" name="username" minlength="1" required>
+                </label>
+                <br>
+                <br>
+                <label>Email:
+                    <input type="email" name="email" placeholder="email@example.com" required>
+                </label>
+                <br>
+                <br>
+                <label>Password:
+                    <input type="password" name="password" minlength="6" required>
+                </label>
+                <br>
+                <br>
+                <label>Verify Password:
+                    <input type="password" name="password" minlength="6" required>
+                </label>
+                <br>
+
+                <p>
+                    Are you an Employee or Finance Manager?
+                    <br>
+                    <br>
+                    <label>
+                        Employee
+                        <input type="radio" name="role" value="Employee">
+                    </label>
+                    <label>
+                        Finance Manager
+                        <input type="radio" name="role" value="Finance Manager">
+                    </label>
+                </p>
+
+                <input type="submit" value="Submit">
+            </fieldset>
+        </form>
+    </div>
+</center>
+</body>
+</html>

@@ -18,7 +18,7 @@ public class UserDAO implements GenericDAO<User> {
 
     @Override
     public User add(User user) {
-        String sql = "insert into users values (default, ?, ?, ?, ?, ?, ?) returning *";
+        String sql = "insert into users values (default, ?, ?, ?, ?, ?, ?, ?) returning *";
         try(Connection conn = cu.getConnection()) {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1,user.getFirst_name());
@@ -26,7 +26,8 @@ public class UserDAO implements GenericDAO<User> {
             ps.setString(3,user.getUsername());
             ps.setString(4,user.getPass());
             ps.setString(5,user.getEmail());
-            ps.setString(6,user.getRole());
+            ps.setDouble(6,user.getFunds());
+            ps.setString(7,user.getRole());
             ResultSet rs = ps.executeQuery();
             if(rs.next()) {
                 User u = new User(
@@ -36,6 +37,7 @@ public class UserDAO implements GenericDAO<User> {
                         rs.getString("username"),
                         rs.getString("pass"),
                         rs.getString("email"),
+                        rs.getDouble("funds"),
                         rs.getString("role")
                 );
                 return u;
@@ -62,6 +64,7 @@ public class UserDAO implements GenericDAO<User> {
                         rs.getString("username"),
                         rs.getString("pass"),
                         rs.getString("email"),
+                        rs.getDouble("funds"),
                         rs.getString("role")
                 );
                 return u;
@@ -88,6 +91,7 @@ public class UserDAO implements GenericDAO<User> {
                         rs.getString("username"),
                         rs.getString("pass"),
                         rs.getString("email"),
+                        rs.getDouble("funds"),
                         rs.getString("role")
                 );
                 return u;
@@ -114,6 +118,7 @@ public class UserDAO implements GenericDAO<User> {
                         rs.getString("username"),
                         rs.getString("pass"),
                         rs.getString("email"),
+                        rs.getDouble("funds"),
                         rs.getString("role")
                 );
                 users.add(u);
@@ -127,7 +132,7 @@ public class UserDAO implements GenericDAO<User> {
 
     @Override
     public void update(User user) {
-        String sql = "update users set first_name = ?, last_name = ?, username = ?, pass = ?, email = ? where id = ?";
+        String sql = "update users set first_name = ?, last_name = ?, username = ?, pass = ?, email = ?, funds = ? where id = ?";
         try(Connection conn = cu.getConnection()) {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1,user.getFirst_name());
@@ -135,7 +140,8 @@ public class UserDAO implements GenericDAO<User> {
             ps.setString(3,user.getUsername());
             ps.setString(4,user.getPass());
             ps.setString(5,user.getEmail());
-            ps.setInt(6,user.getId());
+            ps.setDouble(6,user.getFunds());
+            ps.setInt(7,user.getId());
             ps.executeUpdate();
         } catch(SQLException e) {
             e.printStackTrace();
