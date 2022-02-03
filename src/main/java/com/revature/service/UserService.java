@@ -27,4 +27,5 @@ public class UserService {
     public User getByUsername(String username) {
         return udao.getByUsername(username);
     }
+
 }

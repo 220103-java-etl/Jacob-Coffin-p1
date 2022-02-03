@@ -20,10 +20,11 @@ public class R_form {
     private String justification;
     private String grade;
     private int user_id;
+    private Date add_date;
 
     public R_form() {}
 
-    public R_form(int id, Date day, Time hour, String address, String city, String state, int zip, String description, double cost, String grading_format, String event, String justification, String grade, int user_id) {
+    public R_form(int id, Date day, Time hour, String address, String city, String state, int zip, String description, double cost, String grading_format, String event, String justification, String grade, int user_id, Date add_date) {
         this.id = id;
         this.day = day;
         this.hour = hour;
@@ -38,6 +39,7 @@ public class R_form {
         this.justification = justification;
         this.grade = grade;
         this.user_id = user_id;
+        this.add_date = add_date;
     }
 
     public int getId() {
@@ -152,6 +154,14 @@ public class R_form {
         this.user_id = user_id;
     }
 
+    public Date getAdd_date() {
+        return add_date;
+    }
+
+    public void setAdd_date(Date add_date) {
+        this.add_date = add_date;
+    }
+
     @Override
     public String toString() {
         return "R_form [" +
@@ -169,6 +179,7 @@ public class R_form {
                 ", justification='" + justification + '\'' +
                 ", grade='" + grade + '\'' +
                 ", user_id='" + user_id + '\'' +
+                ", add_date='" + add_date + '\'' +
                 ']';
     }
 

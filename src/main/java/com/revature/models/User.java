@@ -11,11 +11,11 @@ public class User {
     private String pass;
     private String email;
     private double funds;
-    private String role;
+    private Role role;
 
     public User() {}
 
-    public User(int id, String first_name, String last_name, String username, String pass, String email, double funds, String role) {
+    public User(int id, String first_name, String last_name, String username, String pass, String email, double funds, Role role) {
         this.id = id;
         this.first_name = first_name;
         this.last_name = last_name;
@@ -82,11 +82,11 @@ public class User {
         this.funds = funds;
     }
 
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 

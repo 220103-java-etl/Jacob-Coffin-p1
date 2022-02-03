@@ -1,5 +1,6 @@
 package com.revature.repository;
 
+import com.revature.models.Role;
 import com.revature.models.User;
 import com.revature.util.ConnectionUtil;
 
@@ -18,7 +19,7 @@ public class UserDAO implements GenericDAO<User> {
 
     @Override
     public User add(User user) {
-        String sql = "insert into users values (default, ?, ?, ?, ?, ?, ?, ?) returning *";
+        String sql = "insert into users values (default, ?, ?, ?, ?, ?, default, ?) returning *";
         try(Connection conn = cu.getConnection()) {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1,user.getFirst_name());
@@ -26,8 +27,7 @@ public class UserDAO implements GenericDAO<User> {
             ps.setString(3,user.getUsername());
             ps.setString(4,user.getPass());
             ps.setString(5,user.getEmail());
-            ps.setDouble(6,user.getFunds());
-            ps.setString(7,user.getRole());
+            ps.setString(6,user.getRole().toString());
             ResultSet rs = ps.executeQuery();
             if(rs.next()) {
                 User u = new User(
@@ -38,7 +38,7 @@ public class UserDAO implements GenericDAO<User> {
                         rs.getString("pass"),
                         rs.getString("email"),
                         rs.getDouble("funds"),
-                        rs.getString("role")
+                        Role.valueOf(rs.getString("role").toUpperCase().replace(" ", "_"))
                 );
                 return u;
             }
@@ -65,7 +65,7 @@ public class UserDAO implements GenericDAO<User> {
                         rs.getString("pass"),
                         rs.getString("email"),
                         rs.getDouble("funds"),
-                        rs.getString("role")
+                        Role.valueOf(rs.getString("role").toUpperCase().replace(" ", "_"))
                 );
                 return u;
             }
@@ -92,7 +92,7 @@ public class UserDAO implements GenericDAO<User> {
                         rs.getString("pass"),
                         rs.getString("email"),
                         rs.getDouble("funds"),
-                        rs.getString("role")
+                        Role.valueOf(rs.getString("role").toUpperCase().replace(" ", "_"))
                 );
                 return u;
             }
@@ -119,7 +119,7 @@ public class UserDAO implements GenericDAO<User> {
                         rs.getString("pass"),
                         rs.getString("email"),
                         rs.getDouble("funds"),
-                        rs.getString("role")
+                        Role.valueOf(rs.getString("role").toUpperCase().replace(" ", "_"))
                 );
                 users.add(u);
             }

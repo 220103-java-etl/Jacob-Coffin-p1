@@ -19,7 +19,7 @@ public class FormDAO implements GenericDAO<R_form> {
 
     @Override
     public R_form add(R_form r_form) {
-        String sql = "insert into r_forms values (default, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) returning *";
+        String sql = "insert into r_forms values (default, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default) returning *";
         try(Connection conn = cu.getConnection()) {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setDate(1,r_form.getDay());
@@ -51,7 +51,8 @@ public class FormDAO implements GenericDAO<R_form> {
                         rs.getString("event"),
                         rs.getString("justification"),
                         rs.getString("grade"),
-                        rs.getInt("user_id")
+                        rs.getInt("user_id"),
+                        rs.getDate("add_date")
                 );
                 return f;
             }
@@ -83,7 +84,8 @@ public class FormDAO implements GenericDAO<R_form> {
                         rs.getString("event"),
                         rs.getString("justification"),
                         rs.getString("grade"),
-                        rs.getInt("user_id")
+                        rs.getInt("user_id"),
+                        rs.getDate("add_date")
                 );
                 return f;
             }
@@ -91,6 +93,38 @@ public class FormDAO implements GenericDAO<R_form> {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public List<R_form> getByUserId(Integer id) {
+        String sql = "select * from r_forms where user_id = ?";
+        List<R_form> forms = new ArrayList<R_form>();
+        try(Connection conn = cu.getConnection()) {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()) {
+                R_form f = new R_form(
+                        rs.getInt("id"),
+                        rs.getDate("day"),
+                        rs.getTime("hour"),
+                        rs.getString("address"),
+                        rs.getString("city"),
+                        rs.getString("state"),
+                        rs.getInt("zip"),
+                        rs.getString("description"),
+                        rs.getDouble("cost"),
+                        rs.getString("grading_format"),
+                        rs.getString("event"),
+                        rs.getString("justification"),
+                        rs.getString("grade"),
+                        rs.getInt("user_id"),
+                        rs.getDate("add_date")
+                );
+                forms.add(f);
+            }
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+        return forms;
     }
 
     @Override
@@ -120,7 +154,8 @@ public class FormDAO implements GenericDAO<R_form> {
                         rs.getString("event"),
                         rs.getString("justification"),
                         rs.getString("grade"),
-                        rs.getInt("user_id")
+                        rs.getInt("user_id"),
+                        rs.getDate("add_date")
                 );
                 forms.add(f);
             }
