@@ -9,8 +9,13 @@ import com.revature.service.UserService;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -113,6 +118,8 @@ public class AppDriver {
         int input = 0;
         List<R_form> forms = new ArrayList<R_form>();
         FormDAO fdao = new FormDAO();
+        DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+        DateFormat tf = new SimpleDateFormat("HH:mm:ss");
 
         if(role == Role.EMPLOYEE) {
             System.out.println("Welcome " + u.getFirst_name());
@@ -127,31 +134,65 @@ public class AppDriver {
                         }
                         break;
                     case 2:
-                        System.out.println("Enter day of the event in the following format: 'YYYY-MM-DD'");
-                        String day = scan.next();
+                        R_form f = new R_form();
+                        System.out.println("Enter day of the event in the following format: 'YYYY/MM/DD'");
+                        try {
+                            String sday = scan.next();
+                            Date day = (Date) df.parse(sday);
+                            f.setDay(day);
+                        } catch(ParseException e) {
+                            System.out.println("Please enter a valid date!");
+                            break;
+                        }
                         System.out.println("Enter time of the event in the following format: 'HH:MM:SS'");
-                        String hour = scan.next();
+                        try {
+                            String shour = scan.next();
+                            Time hour = (Time) df.parse(shour);
+                            f.setHour(hour);
+                        } catch(ParseException e) {
+                            System.out.println("Please enter a valid time!");
+                            break;
+                        }
                         scan.nextLine();
                         System.out.println("Enter address:");
                         String address = scan.nextLine();
+                        f.setAddress(address);
                         System.out.println("Enter city: ");
                         String city = scan.nextLine();
+                        f.setCity(city);
                         System.out.println("Enter state two letter code: ");
                         String state = scan.next();
-                        System.out.println("Enter zip: ");
+                        if(state.length() == 2) {
+                            f.setState(state);
+                        } else {
+                            System.out.println("Please enter two letters exactly!");
+                            break;
+                        }
+                        System.out.println("Enter 5-digit zip: ");
                         int zip = scan.nextInt();
+                        if(zip >= 10000 && zip <= 99999) {
+                            f.setZip(zip);
+                        } else {
+                            System.out.println("Please enter 5 digits!");
+                            break;
+                        }
                         scan.nextLine();
                         System.out.println("Type in a description: ");
                         String description = scan.nextLine();
+                        f.setDescription(description);
                         System.out.println("How much does it cost?");
                         double cost = scan.nextDouble();
+                        f.setCost(cost);
                         scan.nextLine();
                         System.out.println("What is the grading format?");
                         String grading_format = scan.nextLine();
+                        f.setGrading_format(grading_format);
                         System.out.println("What is the type of event?");
                         String event = scan.nextLine();
+                        f.setEvent(event);
                         System.out.println("Enter any justification (optional): ");
                         String justification = scan.nextLine();
+                        f.setJustification(justification);
                         break;
                     case 3:
 
