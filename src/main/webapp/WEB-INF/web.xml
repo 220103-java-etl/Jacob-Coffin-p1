@@ -14,12 +14,12 @@
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>com.revature.servlets.RegisterServlet</servlet-class>
     </servlet>
-<!--
+
     <servlet>
         <servlet-name>UserServlet</servlet-name>
         <servlet-class>com.revature.servlets.UserServlet</servlet-class>
     </servlet>
--->
+
     <servlet-mapping>
         <servlet-name>FrontServlet</servlet-name>
         <url-pattern>/user</url-pattern>
@@ -29,12 +29,12 @@
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
-<!--
+
     <servlet-mapping>
         <servlet-name>UserServlet</servlet-name>
-        <url-pattern>/user</url-pattern>
+        <url-pattern>/userSession</url-pattern>
     </servlet-mapping>
--->
+
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
