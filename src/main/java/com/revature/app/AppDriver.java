@@ -326,7 +326,12 @@ public class AppDriver {
                                 r.setApproval("Approved");
                                 rs.update(r);
                                 r = rs.getById(r.getId());
+                                User u2 = us.getById(fs.getById(r.getForm_id()).getUser_id());
+                                double funds = u2.getFunds() - r.getRefund();
+                                u2.setFunds(funds);
+                                us.update(u2);
                                 System.out.println(r.toString());
+                                System.out.println(u2.toString());
                             } else if(input2 == 2) {
                                 r.setApproval("Denied");
                                 rs.update(r);

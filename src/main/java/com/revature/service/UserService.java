@@ -32,4 +32,8 @@ public class UserService {
         return udao.getById(id);
     }
 
+    public void update(User u) {
+        udao.update(u);
+    }
+
 }
