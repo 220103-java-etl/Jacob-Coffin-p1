@@ -162,6 +162,7 @@ public class AppDriver {
                          */
                         System.out.println("Enter time of the event in the following format: 'HH:MM:SS'");
                         String shour = scan.next();
+
                         Time hour = Time.valueOf(shour);
                         /*
                         try {
@@ -376,29 +377,21 @@ public class AppDriver {
         switch(input) {
             case 1:
                 System.out.println("Enter date of the event in the following format: 'YYYY/MM/DD'");
-                try {
-                    String sday = scan.next();
-                    Date day = (Date) df.parse(sday);
-                    f.setDay(day);
-                    fs.update(f);
-                    f = fs.getById(f.getId());
-                    System.out.println(f.toString());
-                } catch(ParseException e) {
-                    System.out.println("Please enter a valid date!");
-                }
+                String sday = scan.next();
+                Date day = Date.valueOf(sday);
+                f.setDay(day);
+                fs.update(f);
+                f = fs.getById(f.getId());
+                System.out.println(f.toString());
                 break;
             case 2:
                 System.out.println("Enter time of the event in the following format: 'HH:MM:SS'");
-                try {
-                    String shour = scan.next();
-                    Time hour = (Time) df.parse(shour);
-                    f.setHour(hour);
-                    fs.update(f);
-                    f = fs.getById(f.getId());
-                    System.out.println(f.toString());
-                } catch(ParseException e) {
-                    System.out.println("Please enter a valid time!");
-                }
+                String shour = scan.next();
+                Time hour = Time.valueOf(shour);
+                f.setHour(hour);
+                fs.update(f);
+                f = fs.getById(f.getId());
+                System.out.println(f.toString());
                 break;
             case 3:
                 System.out.println("Enter address:");

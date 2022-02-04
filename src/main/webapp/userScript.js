@@ -1,5 +1,8 @@
 let url = "http://localhost:49152/ERS/userSession";
 
+document.body.style.backgroundColor = "lightgreen";
+document.body.style.marginLeft = "100px";
+
 function getUser() {
 
     let xhr = new XMLHttpRequest();
@@ -18,8 +21,6 @@ function getUser() {
 
 function printUser(u) {
 
-    document.body.style.backgroundColor = "lightgreen";
-    document.body.style.marginLeft = "100px";
     document.write(`<h2>${u.username}</h2>`);
     document.write("<br><br>");
     document.write(`Name: ${u.first_name} ${u.last_name}<br><br>`);
