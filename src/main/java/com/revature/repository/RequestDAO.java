@@ -67,6 +67,29 @@ public class RequestDAO implements GenericDAO<Request> {
         return null;
     }
 
+    public List<Request> getByUserId(Integer id) {
+        String sql = "select * from requests where user_id = ?";
+        List<Request> requests = new ArrayList<Request>();
+        try(Connection conn = cu.getConnection()) {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()) {
+                Request r = new Request(
+                        rs.getInt("id"),
+                        rs.getString("approval"),
+                        rs.getDouble("refund"),
+                        rs.getInt("user_id"),
+                        rs.getInt("form_id")
+                );
+                requests.add(r);
+            }
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+        return requests;
+    }
+
     @Override
     public Request getByUsername(String username) {
         return null;

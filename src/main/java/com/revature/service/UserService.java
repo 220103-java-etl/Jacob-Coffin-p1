@@ -28,4 +28,8 @@ public class UserService {
         return udao.getByUsername(username);
     }
 
+    public User getById(int id) {
+        return udao.getById(id);
+    }
+
 }

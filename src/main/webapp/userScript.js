@@ -18,19 +18,21 @@ function getUser() {
 
 function printUser(u) {
 
-    let body = document.body;
-    body.style.backgroundColor = "#00FF00";
-    body.style.marginLeft = "100px";
+    document.body.style.backgroundColor = "lightgreen";
+    document.body.style.marginLeft = "100px";
     document.write(`<h2>${u.username}</h2>`);
     document.write("<br><br>");
     document.write(`Name: ${u.first_name} ${u.last_name}<br><br>`);
     document.write(`Email: ${u.email}<br><br>`);
     document.write(`Role: ${u.role}<br><br>`);
     document.write(`Available Funds: ${u.funds}<br><br>`);
+    document.write(`<button type="submit" formaction="apply">Apply for Refund</button><br><br>`)
+
     let a = document.createElement('a');
     let link = document.createTextNode("Apply for Refund");
     a.appendChild(link);
     a.title = "Apply for Refund";
     a.href = "apply.html";
+    // a.href = "http://localhost:49152/ERS/apply?param=user";
     document.body.appendChild(a);
 }

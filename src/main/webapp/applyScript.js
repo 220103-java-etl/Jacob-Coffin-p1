@@ -19,18 +19,18 @@ function postForm() {
 function addForm() {
 
     let form = {
-        day: document.getElementById('date').value,
-        hour: document.getElementById('time').value,
-        address: document.getElementById('Address').value,
-        city: document.getElementById('City').value,
-        state: document.getElementById('State').value,
-        zip: document.getElementById('Zip').value,
-        description: document.getElementById('Description').value,
-        cost: document.getElementById('Cost').value,
-        grading_format: document.getElementById('format').value,
-        event: document.getElementById('Event').value,
-        justification: document.getElementById('Justification').value,
-        grade: document.getElementById('Grade')
+        let day: document.getElementById('date').value,
+        let hour: document.getElementById('time').value,
+        let address: document.getElementById('Address').value,
+        let city: document.getElementById('City').value,
+        let state: document.getElementById('State').value,
+        let zip: document.getElementById('Zip').value,
+        let description: document.getElementById('Description').value,
+        let cost: document.getElementById('Cost').value,
+        let grading_format: document.getElementById('format').value,
+        let event: document.getElementById('Event').value,
+        let justification: document.getElementById('Justification').value,
+        let grade: document.getElementById('Grade')
     }
     console.log(form);
 
@@ -46,7 +46,7 @@ function addForm() {
         }
     }
 
-    xhr.open('GET', url, true);
+    xhr.open('POST', url, true);
 
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(formJson);

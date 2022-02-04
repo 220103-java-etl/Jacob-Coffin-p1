@@ -100,6 +100,7 @@ public class FormDAO implements GenericDAO<R_form> {
         List<R_form> forms = new ArrayList<R_form>();
         try(Connection conn = cu.getConnection()) {
             PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             while(rs.next()) {
                 R_form f = new R_form(

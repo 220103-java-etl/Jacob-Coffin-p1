@@ -9,11 +9,19 @@ public class FormService {
 
     FormDAO fdao = new FormDAO();
 
+    public R_form getById(int id) {
+        return fdao.getById(id);
+    }
+
     public List<R_form> getByUserId(int id) {
         return fdao.getByUserId(id);
     }
 
-    public R_form addForm(R_form r) {
-        return fdao.add(r);
+    public R_form addForm(R_form f) {
+        return fdao.add(f);
+    }
+
+    public void update(R_form f) {
+        fdao.update(f);
     }
 }
