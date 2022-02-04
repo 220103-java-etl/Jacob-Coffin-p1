@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refund Application</title>
+</head>
+<style>
+
+</style>
+<body style="background-color:lightgreen" marginwidth="100px" marginheight="100px">
+    <div id="apply" class="apply">
+        <form action="user.html" method="get" onclick="addForm()">
+            <fieldset style="width:800px">
+                <legend>REFUND APPLICATION</legend>
+                <label>Event Type:
+                    <br><br>
+                    <label>
+                        <i>University Course</i>
+                        <input type="radio" name="Event" value="University Course">
+                    </label>
+                    <label>
+                        <i>Seminar</i>
+                        <input type="radio" name="Event" value="Seminar">
+                    </label>
+                    <label>
+                        <i>Certification Preperation Class</i>
+                        <input type="radio" name="Event" value="Certification Prepearation Class">
+                    </label>
+                    <label>
+                        <i>Certificaiton</i>
+                        <input type="radio" name="Event" value="Certification">
+                    </label>
+                    <label>
+                        <i>Technical Training</i>
+                        <input type="radio" name="Event" value="Technical Training">
+                    </label>
+                    <label>
+                        <i>Other</i>
+                        <input type="radio" name="Event" value="Other">
+                    </label>
+                </label>
+                <br><br>
+                <label>
+                    Date:
+                    <input type="date" id="date" name="date">
+                </label>
+                <br><br>
+                <label>
+                    Time:
+                    <input type="time" id="time" name="time">
+                </label>
+                <br><br>
+                <label>
+                    Address:
+                    <input type="text" id="Address" name="Address">
+                </label>
+                <br><br>
+                <label>
+                    City:
+                    <input type="text" id="City" name="City">
+                </label>
+                <br><br>
+                <label>
+                    State:
+                    <input type="text" id="State" name="State" maxlength="2" size="2" placeholder="AK">
+                </label>
+                <br><br>
+                <label>
+                    Zip:
+                    <input type="number" id="Zip" name="Zip" maxlength="5" size="5" placeholder="12345">
+                </label>
+                <br><br>
+                <label>
+                    Cost $
+                    <input type="number" id="Cost" name="cost">
+                </label>
+                <br><br>
+                <label>
+                    Grading Format:
+                    <input type="text" id="format" name="format">
+                </label>
+                <br><br>
+                <label>
+                    Grade:
+                    <input type="text" id="Grade" name="grade">
+                </label>
+                <br><br>
+                <label>
+                    Description:
+                    <br><textarea name="Description" cols="50" rows="10"></textarea>
+                </label>
+                <br><br>
+                <label>
+                    Justification (Optional):
+                    <br><textarea name="Justification" cols="50" rows="10"></textarea>
+                </label>
+                <br><br>
+                <input type="submit" value="Apply">
+            </fieldset>
+        </form>
+    </div>
+
+
+
+<script src="applyScript.js"></script>
+</body>
+</html>
